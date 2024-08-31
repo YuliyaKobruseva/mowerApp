@@ -1,5 +1,6 @@
 package com.example.mowerApp.application.service;
 
+import com.example.mowerApp.domain.exception.InvalidInstructionException;
 import com.example.mowerApp.domain.model.Mower;
 import com.example.mowerApp.domain.model.ObstacleManager;
 import com.example.mowerApp.domain.model.Plateau;
@@ -22,6 +23,7 @@ public class MowerService {
                 mower.executeInstruction(instruction, plateau, obstacleManager);
             } catch (IllegalArgumentException e) {
                 logger.error("Invalid instruction: {} - Skipping", instructionChar, e);
+                throw new InvalidInstructionException("Invalid instruction: " + instructionChar);
             }
         }
     }
