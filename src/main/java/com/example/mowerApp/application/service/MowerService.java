@@ -2,6 +2,7 @@ package com.example.mowerApp.application.service;
 
 import com.example.mowerApp.domain.model.Mower;
 import com.example.mowerApp.domain.model.Plateau;
+import com.example.mowerApp.domain.model.enums.Instruction;
 
 public class MowerService {
     private final Plateau plateau;
@@ -11,14 +12,11 @@ public class MowerService {
     }
 
     public void moveMower(Mower mower, String instructions) {
-        for (char instruction : instructions.toCharArray()) {
-            switch (instruction) {
-                case 'L': mower.turnLeft(); break;
-                case 'R': mower.turnRight(); break;
-                case 'M': mower.moveForward(plateau); break;
-                default: throw new IllegalArgumentException("Invalid instruction: " + instruction);
-            }
+        for (char instructionChar : instructions.toCharArray()) {
+            Instruction instruction = Instruction.fromChar(instructionChar);
+            mower.executeInstruction(instruction, plateau);
         }
     }
 }
+
 

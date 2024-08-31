@@ -1,4 +1,4 @@
-package com.example.mowerApp.domain.model;
+package com.example.mowerApp.domain.model.enums;
 
 public enum Direction {
     N("North"), E("East"), S("South"), W("West");

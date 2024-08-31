@@ -1,7 +1,7 @@
 package com.example.mowerApp.tools.validator;
 
 import com.example.mowerApp.domain.exception.InvalidDirectionException;
-import com.example.mowerApp.domain.model.Direction;
+import com.example.mowerApp.domain.model.enums.Direction;
 
 public class DirectionValidator {
 
