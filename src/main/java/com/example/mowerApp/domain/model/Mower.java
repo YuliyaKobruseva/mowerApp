@@ -9,12 +9,27 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 public class Mower {
     private int x;
     private int y;
     private Direction direction;
+
+    public void executeInstruction(Instruction instruction, Plateau plateau) {
+        switch (instruction) {
+            case L:
+                this.direction = direction.turnLeft();
+                break;
+            case R:
+                this.direction = direction.turnRight();
+                break;
+            case M:
+                moveForward(plateau);
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid instruction: " + instruction);
+        }
+    }
 
     public void moveForward(Plateau plateau) {
         switch (direction) {
@@ -38,22 +53,6 @@ public class Mower {
                     x--;
                 }
                 break;
-        }
-    }
-
-    public void executeInstruction(Instruction instruction, Plateau plateau) {
-        switch (instruction) {
-            case L:
-                this.direction = direction.turnLeft();
-                break;
-            case R:
-                this.direction = direction.turnRight();
-                break;
-            case M:
-                moveForward(plateau);
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid instruction: " + instruction);
         }
     }
 }
