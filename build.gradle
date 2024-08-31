@@ -22,7 +22,9 @@ dependencies {
 	implementation 'org.projectlombok:lombok:1.18.24'
 	implementation 'org.springframework.boot:spring-boot-starter-logging'
 
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'junit:junit:4.13.2'
+	testImplementation 'io.cucumber:cucumber-java:7.0.0'
+	testImplementation 'io.cucumber:cucumber-junit:7.0.0'
 
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
@@ -30,5 +32,5 @@ dependencies {
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+	useJUnit()
 }
