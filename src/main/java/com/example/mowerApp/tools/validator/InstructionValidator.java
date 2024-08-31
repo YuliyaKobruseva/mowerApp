@@ -12,5 +12,11 @@ public class InstructionValidator {
             throw new IllegalArgumentException("Invalid instruction: " + instructionChar + ". Valid instructions are L, R, M.");
         }
     }
+
+    public static void validateInstructionsMatches(String instructions) {
+        if (!instructions.matches("[LRM]+")) {
+            throw new IllegalArgumentException("Invalid input: Instructions must only contain the letters L, R, M.");
+        }
+    }
 }
 
