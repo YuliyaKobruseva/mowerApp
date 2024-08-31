@@ -64,7 +64,7 @@ public class MowerConsoleApp {
 
             String instructions = InputValidator.getValidatedInputString(scanner, InstructionValidator::validateInstructionsMatches);
             if (instructions != null) {
-                new MowerService(plateau).moveMower(mower, instructions, plateau, obstacleManager);
+                new MowerService(plateau).moveMower(mower, instructions.toUpperCase(), plateau, obstacleManager);
             }
         }
         return mowers;

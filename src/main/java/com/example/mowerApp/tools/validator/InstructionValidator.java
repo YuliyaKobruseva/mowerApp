@@ -14,7 +14,7 @@ public class InstructionValidator {
     }
 
     public static void validateInstructionsMatches(String instructions) {
-        if (!instructions.matches("[LRM]+")) {
+        if (!instructions.toUpperCase().matches("[LRM]+")) {
             throw new IllegalArgumentException("Invalid input: Instructions must only contain the letters L, R, M.");
         }
     }
