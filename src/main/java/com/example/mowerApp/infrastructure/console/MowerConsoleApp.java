@@ -21,7 +21,7 @@ public class MowerConsoleApp {
             System.out.println("Enter the upper-right coordinates of the plateau:");
             int plateauWidth = scanner.nextInt();
             int plateauHeight = scanner.nextInt();
-            Plateau plateau = new Plateau(plateauWidth, plateauHeight);
+            Plateau plateau = Plateau.getInstance(plateauWidth, plateauHeight);
 
             MowerService mowerService = new MowerService(plateau);
 
