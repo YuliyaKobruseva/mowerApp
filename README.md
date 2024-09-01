@@ -25,15 +25,39 @@ colisionen con obstáculos, que pueden incluir otros cortacéspedes.
 
 ## Estructura del Proyecto
 
-- `src/main/java/com/example/mowerApp`:
-    - **domain**: Contiene las clases principales del dominio, como `Mower`, `Plateau`, `Obstacle`, y `ObstacleManager`.
-    - **application**: Contiene la clase de servicio `MowerService` que maneja la lógica principal del movimiento de los cortacéspedes.
-    - **infrastructure**: Contiene la interfaz de consola `MowerConsoleApp` para interactuar con la aplicación.
-    - **tools/validator**: Contiene las clases de validación para validar entradas como direcciones, posiciones de los cortacéspedes y tamaño del plateau.
-
-- `src/test/java/com/example/mowerApp`:
-    - **unit**: Contiene las pruebas unitarias para cada clase de dominio y validación.
-    - **integration**: Contiene las pruebas de integración usando Cucumber.
+    ```bash
+    src/main/java/com/example/mowerApp/
+    ├── domain/
+    │   ├── Mower.java             # Clase que representa el cortacésped
+    │   ├── Plateau.java           # Clase que representa el plateau
+    │   ├── Obstacle.java          # Clase que representa los obstáculos
+    │   └── ObstacleManager.java   # Clase que gestiona los obstáculos, incluyendo otros cortacéspedes
+    ├── application/
+    │   └── MowerService.java      # Clase de servicio que maneja la lógica principal del movimiento de los cortacéspedes
+    ├── infrastructure/
+    │   └── MowerConsoleApp.java   # Interfaz de consola para interactuar con la aplicación
+    └── tools/validator/
+        ├── DirectionValidator.java       # Clase para validar las direcciones
+        ├── MowerPositionValidator.java   # Clase para validar las posiciones de los cortacéspedes
+        ├── PlateauSizeValidator.java     # Clase para validar el tamaño del plateau
+        └── InstructionValidator.java     # Clase para validar las instrucciones de movimiento
+    
+    src/test/java/com/example/mowerApp/
+    ├── unit/
+    │   ├── domain/
+    │   │   ├── MowerTest.java            # Pruebas unitarias para la clase Mower
+    │   │   ├── PlateauTest.java          # Pruebas unitarias para la clase Plateau
+    │   │   ├── ObstacleTest.java         # Pruebas unitarias para la clase Obstacle
+    │   │   └── ObstacleManagerTest.java  # Pruebas unitarias para la clase ObstacleManager
+    │   └── tools/validator/
+    │       ├── DirectionValidatorTest.java   # Pruebas unitarias para DirectionValidator
+    │       ├── MowerPositionValidatorTest.java # Pruebas unitarias para MowerPositionValidator
+    │       ├── PlateauSizeValidatorTest.java  # Pruebas unitarias para PlateauSizeValidator
+    │       └── InstructionValidatorTest.java  # Pruebas unitarias para InstructionValidator
+    └── integration/
+        ├── stepdefs/
+        │   └── MowerStepDefinitions.java   # Step definitions para pruebas de integración con Cucumber
+        └── MowerAppApplicationTests.java   # Clase principal para ejecutar las pruebas de integración
 
 ## Instrucciones de Uso
 
@@ -49,10 +73,10 @@ colisionen con obstáculos, que pueden incluir otros cortacéspedes.
     java -jar build/libs/mowerApp-0.0.1-SNAPSHOT.jar
 
 3. **Ejecucíon de pruebas**:
-3.1 **Pruebas unitarias**:
+3.1. **Pruebas unitarias**:
     ```bash
     ./gradlew test
-3.2 **Pruebas de integración**:
+3.2. **Pruebas de integración**:
     ```bash
     ./gradlew cucumber
 
@@ -63,27 +87,25 @@ otros cortacéspedes como obstáculos para asegurar que no se produzcan colision
 
 ### Posibles Implementaciones Futuras
 
-- **Soporte para múltiples tipos de obstáculos:** 
-- Ampliar `ObstacleManager` para manejar diferentes tipos 
-- de obstáculos con comportamientos específicos, como áreas prohibidas o zonas de paso limitado.
+1. **Soporte para múltiples tipos de obstáculos:**
+    - Ampliar `ObstacleManager` para manejar diferentes tipos de obstáculos con
+      comportamientos específicos, como áreas prohibidas o zonas de paso limitado.
 
-- **Mejoras en la lógica de movimiento:** 
-- Implementar rutas óptimas para los cortacéspedes para evitar 
-- obstáculos y minimizar el tiempo de trabajo en el plateau.
+2. **Mejoras en la lógica de movimiento:**
+    - Implementar rutas óptimas para los cortacéspedes para evitar obstáculos y
+      minimizar el tiempo de trabajo en el plateau.
 
-- **Interfaz gráfica de usuario (GUI):** 
-- Crear una interfaz gráfica que permita a los usuarios configurar el plateau, 
-- posicionar cortacéspedes y observar sus movimientos en tiempo real.
+3. **Interfaz gráfica de usuario (GUI):**
+    - Crear una interfaz gráfica que permita a los usuarios configurar el plateau,
+      posicionar cortacéspedes y observar sus movimientos en tiempo real.
 
-- **Simulaciones avanzadas:** 
-- Incluir opciones para ejecutar simulaciones de largo plazo que permitan observar el 
-- rendimiento de múltiples cortacéspedes trabajando simultáneamente en un mismo plateau.
+4. **Simulaciones avanzadas:**
+    - Incluir opciones para ejecutar simulaciones de largo plazo que permitan observar
+      el rendimiento de múltiples cortacéspedes trabajando simultáneamente en un mismo plateau.
 
-- **Soporte para terrenos irregulares:** 
-- Permitir la configuración de terrenos con diferentes niveles de elevación 
-- o áreas inaccesibles, lo que influiría en las rutas y movimientos de los cortacéspedes.
-
-
+5. **Soporte para terrenos irregulares:**
+    - Permitir la configuración de terrenos con diferentes niveles de elevación o
+      áreas inaccesibles, lo que influiría en las rutas y movimientos de los cortacéspedes.
 
 ### Contribución
 
