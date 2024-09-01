@@ -11,7 +11,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,30 +27,41 @@ public class MowerStepDefinitions {
     @Before
     public void setUp() {
         // Inicializar ObstacleManager y otros componentes comunes aquí
-        this.plateau = Plateau.getInstance(5, 5);  // Por ejemplo, con un tamaño por defecto
+        this.plateau = Plateau.getInstance(5, 5);
         this.obstacleManager = new ObstacleManager(plateau);
     }
 
     @Given("a plateau of size {int} {int}")
     public void a_plateau_of_size(int width, int height) {
         plateau = Plateau.getInstance(width, height);
+        obstacleManager = new ObstacleManager(plateau);
     }
 
-    @When("a mower is placed at position {int} {int} {word}")
-    public void a_mower_is_placed_at_position_with_invalid_direction(int x, int y, String direction) {
-        try {
-            Direction dir = Direction.valueOf(direction.toUpperCase());
-            mower = new Mower(x, y, dir);
-            mowers.add(mower);
-        } catch (IllegalArgumentException e) {
-            exception = new IllegalArgumentException("Invalid direction: " + direction + ". Valid directions are N, E, S, W.");
-        }
+    @Given("a mower is placed at position {int} {int} {word}")
+    public void a_mower_is_placed_at_position_facing(int x, int y, String direction) {
+        mower = new Mower(x, y, Direction.valueOf(direction.toUpperCase()));
+        mowers.add(mower);
+        obstacleManager.addMower(mower); // Añadido a la lista de obstáculos
     }
 
     @Given("another mower is placed at position {int} {int} {word}")
     public void another_mower_is_placed_at_position_facing(int x, int y, String direction) {
         Mower anotherMower = new Mower(x, y, Direction.valueOf(direction.toUpperCase()));
         mowers.add(anotherMower);
+        obstacleManager.addMower(anotherMower);
+    }
+
+    @When("a mower is placed at position {int} {int} with invalid direction {word}")
+    public void a_mower_is_placed_with_invalid_direction(int x, int y, String direction) {
+        try {
+            Direction dir = Direction.valueOf(direction.toUpperCase());
+            mower = new Mower(x, y, dir);
+            mowers.add(mower);
+            obstacleManager.addMower(mower);
+        } catch (IllegalArgumentException e) {
+            exception = new IllegalArgumentException("Invalid direction: " + direction + ". " +
+                    "Valid directions are N, E, S, W.");
+        }
     }
 
     @When("the mower receives the instruction {string}")

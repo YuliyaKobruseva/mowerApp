@@ -1,21 +1,21 @@
 package com.example.mowerApp.domain.model;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+
 import lombok.RequiredArgsConstructor;
 
 import java.util.HashSet;
-import java.util.Random;
 import java.util.Set;
 
 @RequiredArgsConstructor
 public class ObstacleManager {
     private final Set<Obstacle> obstacles = new HashSet<>();
     private final Plateau plateau;
+    private final Set<Mower> mowers = new HashSet<>();
+
 
     public boolean hasObstacle(int x, int y) {
-        return obstacles.contains(new Obstacle(x, y));
+        return obstacles.contains(new Obstacle(x, y))|| mowers.stream().anyMatch(mower -> mower.getX() == x
+                && mower.getY() == y);
     }
 
     public void addObstacle(int x, int y) {
@@ -26,15 +26,15 @@ public class ObstacleManager {
         }
     }
 
-    public void generateRandomObstacles(int numberOfObstacles) {
-        Random random = new Random();
-        while (obstacles.size() < numberOfObstacles) {
-            int x = random.nextInt(plateau.getWidth() + 1);
-            int y = random.nextInt(plateau.getHeight() + 1);
-            if (!hasObstacle(x, y)) {
-                addObstacle(x, y);
-            }
-        }
+    public void addMower(Mower mower) {
+        mowers.add(mower);
     }
+
+    public void updateMowerPosition(Mower mower, int newX, int newY) {
+        mowers.remove(mower);
+        mower.setPosition(newX, newY);
+        mowers.add(mower);
+    }
+
 }
 

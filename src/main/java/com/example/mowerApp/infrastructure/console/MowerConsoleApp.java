@@ -27,7 +27,8 @@ public class MowerConsoleApp {
 
     public void run() {
         try (Scanner scanner = new Scanner(System.in)) {
-            logger.info("Enter plateau size (e.g., '5 5'), followed by each mower's position and instructions. Leave an empty line to finish.");
+            logger.info("Enter plateau size (e.g., '5 5'), followed by each mower's position and instructions. " +
+                    "Leave an empty line to finish.");
 
             Plateau plateau = readPlateau(scanner);
             ObstacleManager obstacleManager = new ObstacleManager(plateau);
@@ -41,7 +42,8 @@ public class MowerConsoleApp {
     }
 
     private Plateau readPlateau(Scanner scanner) {
-        String[] plateauSizeParts = InputValidator.getValidatedInputArray(scanner, PlateauSizeValidator::validatePlateauSize);
+        String[] plateauSizeParts = InputValidator.getValidatedInputArray(scanner,
+                PlateauSizeValidator::validatePlateauSize);
         int plateauWidth = Integer.parseInt(plateauSizeParts[0]);
         int plateauHeight = Integer.parseInt(plateauSizeParts[1]);
 
@@ -52,7 +54,8 @@ public class MowerConsoleApp {
         List<Mower> mowers = new ArrayList<>();
 
         while (true) {
-            String[] positionParts = InputValidator.getValidatedInputArray(scanner, MowerPositionValidator::validateMowerPosition);
+            String[] positionParts = InputValidator.getValidatedInputArray(scanner,
+                    MowerPositionValidator::validateMowerPosition);
             if (positionParts == null) break;
 
             Mower mower = new Mower(
@@ -61,8 +64,10 @@ public class MowerConsoleApp {
                     Direction.valueOf(positionParts[2].toUpperCase())
             );
             mowers.add(mower);
+            obstacleManager.addMower(mower);
 
-            String instructions = InputValidator.getValidatedInputString(scanner, InstructionValidator::validateInstructionsMatches);
+            String instructions = InputValidator.getValidatedInputString(scanner,
+                    InstructionValidator::validateInstructionsMatches);
             if (instructions != null) {
                 new MowerService(plateau).moveMower(mower, instructions.toUpperCase(), plateau, obstacleManager);
             }

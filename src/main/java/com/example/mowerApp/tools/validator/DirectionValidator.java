@@ -9,7 +9,8 @@ public class DirectionValidator {
         try {
             return Direction.valueOf(directionInput.toUpperCase());
         } catch (IllegalArgumentException e) {
-            throw new InvalidDirectionException("Invalid direction: " + directionInput + ". Valid directions are N, E, S, W.");
+            throw new InvalidDirectionException("Invalid direction: " + directionInput + ". " +
+                    "Valid directions are N, E, S, W.");
         }
     }
 }

@@ -29,6 +29,14 @@ Feature: Mower operations on a plateau
 
   Scenario: Mower is placed with an invalid direction
     Given a plateau of size 5 5
-    When a mower is placed at position 1 2 Q
+    When a mower is placed at position 1 2 with invalid direction Q
     Then an error should be raised with message "Invalid direction: Q. Valid directions are N, E, S, W."
+
+  Scenario: Mower stops when encountering another mower
+    Given a plateau of size 5 5
+    And a mower is placed at position 1 2 N
+    And another mower is placed at position 1 3 N
+    When the first mower receives the instruction "M"
+    Then the final position of the first mower should be 1 2 N
+    And the final position of the second mower should be 1 3 N
 

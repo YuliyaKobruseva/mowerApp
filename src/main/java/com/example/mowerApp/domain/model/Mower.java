@@ -67,6 +67,11 @@ public class Mower {
         }
     }
 
+    public void setPosition(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
     private void logPosition() {
         movementLog.add("Position: (" + x + ", " + y + "), Direction: " + direction);
     }

@@ -9,7 +9,8 @@ public class InstructionValidator {
         try {
             return Instruction.fromChar(instructionChar);
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("Invalid instruction: " + instructionChar + ". Valid instructions are L, R, M.");
+            throw new IllegalArgumentException("Invalid instruction: " + instructionChar + ". " +
+                    "Valid instructions are L, R, M.");
         }
     }
 
