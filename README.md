@@ -85,10 +85,10 @@ colisionen con obstáculos, que pueden incluir otros cortacéspedes.
         2. Busca "Cucumber for Java" en el mercado de plugins.
         3. Instala el plugin y reinicia IntelliJ IDEA si es necesario.
     
-      - **En Eclipse**:
-          1. Ve a `Help > Eclipse Marketplace`.
-          2. Busca "Cucumber" y selecciona "Cucumber Eclipse Plugin".
-          3. Instala el plugin y reinicia Eclipse si es necesario.
+    - **En Eclipse**:
+        1. Ve a `Help > Eclipse Marketplace`.
+        2. Busca "Cucumber" y selecciona "Cucumber Eclipse Plugin".
+        3. Instala el plugin y reinicia Eclipse si es necesario.
     
     ### Ejecución de Pruebas
     
