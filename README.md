@@ -26,38 +26,60 @@ colisionen con obstáculos, que pueden incluir otros cortacéspedes.
 ## Estructura del Proyecto
 
     ```bash
-    src/main/java/com/example/mowerApp/
-    ├── domain/
-    │   ├── Mower.java             # Clase que representa el cortacésped
-    │   ├── Plateau.java           # Clase que representa el plateau
-    │   ├── Obstacle.java          # Clase que representa los obstáculos
-    │   └── ObstacleManager.java   # Clase que gestiona los obstáculos, incluyendo otros cortacéspedes
-    ├── application/
-    │   └── MowerService.java      # Clase de servicio que maneja la lógica principal del movimiento de los cortacéspedes
-    ├── infrastructure/
-    │   └── MowerConsoleApp.java   # Interfaz de consola para interactuar con la aplicación
-    └── tools/validator/
-        ├── DirectionValidator.java       # Clase para validar las direcciones
-        ├── MowerPositionValidator.java   # Clase para validar las posiciones de los cortacéspedes
-        ├── PlateauSizeValidator.java     # Clase para validar el tamaño del plateau
-        └── InstructionValidator.java     # Clase para validar las instrucciones de movimiento
-    
-    src/test/java/com/example/mowerApp/
-    ├── unit/
-    │   ├── domain/
-    │   │   ├── MowerTest.java            # Pruebas unitarias para la clase Mower
-    │   │   ├── PlateauTest.java          # Pruebas unitarias para la clase Plateau
-    │   │   ├── ObstacleTest.java         # Pruebas unitarias para la clase Obstacle
-    │   │   └── ObstacleManagerTest.java  # Pruebas unitarias para la clase ObstacleManager
-    │   └── tools/validator/
-    │       ├── DirectionValidatorTest.java   # Pruebas unitarias para DirectionValidator
-    │       ├── MowerPositionValidatorTest.java # Pruebas unitarias para MowerPositionValidator
-    │       ├── PlateauSizeValidatorTest.java  # Pruebas unitarias para PlateauSizeValidator
-    │       └── InstructionValidatorTest.java  # Pruebas unitarias para InstructionValidator
-    └── integration/
-        ├── stepdefs/
-        │   └── MowerStepDefinitions.java   # Step definitions para pruebas de integración con Cucumber
-        └── MowerAppApplicationTests.java   # Clase principal para ejecutar las pruebas de integración
+    src/
+      ├── main/
+      │   ├── java/
+      │   │   └── mowerApp/
+      │   │       ├── service/
+      │   │       │   └── MowerService.java               # Service class handling the main mower movement logic
+      │   │       ├── domain/
+      │   │       │   ├── exception/
+      │   │       │   │   ├── InvalidDirectionException.java
+      │   │       │   │   └── InvalidInstructionException.java
+      │   │       │   ├── model/
+      │   │       │   │   ├── enums/
+      │   │       │   │   │   ├── Direction.java
+      │   │       │   │   │   ├── Instruction.java
+      │   │       │   │   ├── Mower.java
+      │   │       │   │   ├── Obstacle.java
+      │   │       │   │   ├── ObstacleManager.java
+      │   │       │   │   └── Plateau.java
+      │   │       ├── console/
+      │   │       │   └── MowerConsoleApp.java            # Console interface to interact with the application
+      │   │       └── validator/
+      │   │           ├── DirectionValidator.java
+      │   │           ├── InputValidator.java
+      │   │           ├── InstructionValidator.java
+      │   │           ├── MowerPositionValidator.java
+      │   │           └── PlateauSizeValidator.java
+      
+      test/
+      ├── java/
+      │   └── mowerApp/
+      │       ├── integration/
+      │       │   ├── stepdefs/
+      │       │   │   ├── MowerStepDefinitions.java       # Step definitions for integration testing with Cucumber
+      │       │   └── MowerAppApplicationTests.java       # Main class for running integration tests
+      │       ├── unit/
+      │       │   ├── service/
+      │       │   │   └── MowerServiceUnitTest.java
+      │       │   ├── model/
+      │       │   │   ├── enums/
+      │       │   │   │   ├── DirectionUnitTest.java
+      │       │   │   │   ├── InstructionUnitTest.java
+      │       │   │   ├── MowerUnitTest.java
+      │       │   │   ├── ObstacleManagerUnitTest.java
+      │       │   │   └── PlateauUnitTest.java
+      │       │   └── validator/
+      │       │       ├── DirectionValidatorTest.java
+      │       │       ├── MowerPositionValidatorTest.java
+      │       │       ├── PlateauSizeValidatorTest.java
+      │       │       └── InstructionValidatorTest.java
+      ├── resources/
+      │   ├── features/
+      │   │   ├── MowerApp.feature
+      │   └── cucumber.properties
+
 
 ## Instrucciones de Uso
 
