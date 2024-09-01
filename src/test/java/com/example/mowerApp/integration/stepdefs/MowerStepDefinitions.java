@@ -1,4 +1,4 @@
-package com.example.mowerApp.stepdefs;
+package com.example.mowerApp.integration.stepdefs;
 
 import com.example.mowerApp.application.service.MowerService;
 import com.example.mowerApp.domain.exception.InvalidInstructionException;
