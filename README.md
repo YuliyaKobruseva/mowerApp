@@ -7,6 +7,13 @@ en un área rectangular según las instrucciones proporcionadas por el usuario. 
 gestionar el movimiento de los cortacéspedes, asegurando que no se salgan de los límites del plateau ni 
 colisionen con obstáculos, que pueden incluir otros cortacéspedes.
 
+## Limitaciones
+
+- **Un solo plateau por ejecución**: La aplicación está diseñada para admitir la creación de un solo plateau por 
+cada ejecución. Si se necesita definir otro plateau, es necesario reiniciar la aplicación y definir un nuevo tamaño 
+para el plateau desde el principio.
+
+
 ## Características
 
 - Definir el tamaño de un plateau rectangular.
